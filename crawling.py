@@ -1,3 +1,6 @@
+# 셀레니움 모든 동영상 url 가져오기
+# 
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time

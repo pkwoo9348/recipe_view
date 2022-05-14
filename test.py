@@ -19,15 +19,9 @@ url = 'https://www.youtube.com/watch?v=e--h7ax_6pQ'
 driver.get(url)
 driver.implicitly_wait(5)
 
-#html = driver.page_source
-#soup = BeautifulSoup(html, 'html.parser')
-
 
 coments=driver.find_elements(By.CSS_SELECTOR, 'span.style-scope.yt-formatted-string')
 
-#coment= coment.get_attribute("text") 
 
 for coment in coments:
     print(coment.text)
-
-# #description > yt-formatted-string > span:nth-child(6)
