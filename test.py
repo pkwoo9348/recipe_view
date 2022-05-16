@@ -1,40 +1,28 @@
-# test용 파일
-# test 후 병합
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-import csv
+import openpyxl
 
+dir = r"C:\Users\kp\Desktop\recipe_view\test.xlsx"
 
-# selenium에서 사용할 웹 드라이버 절대 경로 정보
-chromedriver = r'C:\Users\kp\Desktop\recipe_view\chromedriver_win32\chromedriver.exe'
-# selenum의 webdriver에 앞서 설치한 chromedirver를 연동한다.
-driver = webdriver.Chrome(chromedriver)
-# driver로 특정 페이지를 크롤링한다.
+# 경로에 있는 excel파일을 불러온다.
+excel = openpyxl.load_workbook(dir)
 
-url = 'https://www.youtube.com/watch?v=-bewV9LQ_JU'
+# create_sheet() 메소드로 새로운 시트를 생성한다.
+excel.create_sheet('chocolate')
+excel.create_sheet('bread')
 
-driver.get(url)
-driver.implicitly_wait(5)
+excel.save(dir)
+excel = openpyxl.load_workbook(dir)
 
+# bread 시트를 선택
+excel_ws = excel['bread']
 
-coments=driver.find_elements(By.CSS_SELECTOR, 'span.style-scope.yt-formatted-string')
-i=0
+# A1 셀을 직접 지정해 입력
+excel_ws['A1'] = 'HONEY'
 
-excel_url=[]
-excel_coment=[]
+# 셀을 행과 열로 지정해 입력
+excel_ws.cell(row = 2, column = 1).value = 'Cheese'
 
-for coment in coments:
-    print(i)
-    if len(coment.text)> 100:
-        excel_url.append(url)
-        excel_coment.append(coment.text)
-    else:
-        continue
-    i=i+1
+# 입력되어있는 바로 밑 행의 처음부터 입력된다.
+for x in range(10):
+    excel_ws.append(['I', 'like', 'bread'])
 
-f = open('write.csv','w', newline='')
-wr = csv.writer(f)
-
-wr.writerow([excel_url, excel_coment])
-
-f.close()
+excel.save(dir)
