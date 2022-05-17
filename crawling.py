@@ -39,6 +39,7 @@ url_lists=driver.find_elements_by_css_selector("a.yt-simple-endpoint.style-scope
 # url 순회 데이터 리스트에 append
 for url_list in url_lists:
     url=url_list.get_attribute("href")
+    
     driver2= webdriver.Chrome(chromedriver)
     driver2.get(url)
     driver2.implicitly_wait(5)
@@ -60,20 +61,20 @@ for url_list in url_lists:
 wb = xl.Workbook()
 sheet = wb.active
 sheet.title = '테스트'
+dir = r"C:\Users\kp\Desktop\recipe_view\test.xlsx"
+
 # 컬럼명 지정(헤더)
 col_names = ['url', 'coment'] 
 
 for seq, name in enumerate(col_names): 
     sheet.cell(row=1, column=seq+1, value=name) 
 
-wb.save(r"C:\Users\kp\Desktop\recipe_view\test.xlsx") 
+wb.save(dir) 
 wb.close()
 
 time.sleep(50)
 
 # 엑셀에 저장
-dir = r"C:\Users\kp\Desktop\recipe_view\test.xlsx"
-
 excel = xl.load_workbook(dir)
 
 # 시트 선택
