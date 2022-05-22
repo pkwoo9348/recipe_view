@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
 public class Apicontroller {
-    
+
     @RequestMapping(value ="/api/test",method =RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public String getApiTest(){

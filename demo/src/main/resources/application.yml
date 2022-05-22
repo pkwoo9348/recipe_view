@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql//database-2.clufoxjoavjk.ap-northeast-2.rds.amazonaws.com:3306/preword?serverTimeZone=UTC&CharEncoding=utf-8
+    username: admin
+    password: kpadmin12
