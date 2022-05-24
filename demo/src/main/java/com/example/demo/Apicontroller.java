@@ -14,4 +14,11 @@ public class Apicontroller {
     public String getApiTest(){
         return "{\"result\": \"ok\"}";
     }
+
+    @RequestMapping(value ="/test/api",method =RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public String start(){
+        return "Hello, Spring Boot!";
+    }
+
 }
